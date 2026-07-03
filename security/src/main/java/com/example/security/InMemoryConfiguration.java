@@ -13,9 +13,15 @@ class InMemoryConfiguration {
 
 	@Bean
 	InMemoryUserDetailsManager memoryUserDetailsManager(PasswordEncoder pw) {
-		return new InMemoryUserDetailsManager(
-				User.withUsername("user@anotherone.site").roles("ADMIN").password(pw.encode("p@ssw0rd")).build(),
-				User.withUsername("josh@joshlong.com").roles("USER", "ADMIN").password(pw.encode("pw")).build());
+		return new InMemoryUserDetailsManager(User.withUsername("user@anotherone.site") //
+			.roles("ADMIN") //
+			.password(pw.encode("p@ssw0rd")) //
+			.build(),
+				User.withUsername("josh@joshlong.com") //
+					.roles("USER", "ADMIN") //
+					.password(pw.encode("pw")) //
+					.build() //
+		);
 	}
 
 }
