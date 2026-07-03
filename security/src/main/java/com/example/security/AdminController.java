@@ -11,9 +11,9 @@ import java.util.Map;
 @ResponseBody
 class AdminController {
 
-    @GetMapping("/admin")
-    Map<String, String> admin(Principal principal) {
-        return Map.of("admin", principal.getName());
-    }
+	@GetMapping("/admin")
+	Map<String, String> admin(Principal principal) {
+		return Map.of("admin", principal.getName());
+	}
 
 }

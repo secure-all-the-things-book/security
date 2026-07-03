@@ -8,7 +8,7 @@ import org.springframework.security.core.authority.FactorGrantedAuthority;
 @Profile("globalmfa")
 @Configuration
 @EnableMultiFactorAuthentication(
-        authorities = {FactorGrantedAuthority.OTT_AUTHORITY, FactorGrantedAuthority.PASSWORD_AUTHORITY})
+		authorities = { FactorGrantedAuthority.OTT_AUTHORITY, FactorGrantedAuthority.PASSWORD_AUTHORITY })
 class GlobalMfaConfiguration {
 
 }

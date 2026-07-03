@@ -12,15 +12,15 @@ import org.springframework.security.core.authority.FactorGrantedAuthority;
 @EnableMultiFactorAuthentication(authorities = {})
 class MfaConfiguration {
 
-    @Bean
-    Customizer<HttpSecurity> httpSecurityCustomizer() {
-        return security -> {
-            var amf = AuthorizationManagerFactories.multiFactor()
-                    .requireFactors(FactorGrantedAuthority.PASSWORD_AUTHORITY, FactorGrantedAuthority.OTT_AUTHORITY)
-                    .build();
-            security.authorizeHttpRequests(a -> a.requestMatchers("/admin").access(amf.authenticated()) //
-            );//
-        };
-    }
+	@Bean
+	Customizer<HttpSecurity> httpSecurityCustomizer() {
+		return security -> {
+			var amf = AuthorizationManagerFactories.multiFactor()
+				.requireFactors(FactorGrantedAuthority.PASSWORD_AUTHORITY, FactorGrantedAuthority.OTT_AUTHORITY)
+				.build();
+			security.authorizeHttpRequests(a -> a.requestMatchers("/admin").access(amf.authenticated()) //
+			);//
+		};
+	}
 
 }
