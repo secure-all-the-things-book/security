@@ -1,7 +1,5 @@
-delete
-from authorities;
-delete
-from users;
+delete from authorities;
+delete from users;
 
 insert into users (username, password, enabled)
 values ('josh@joshlong.com', '{bcrypt}$2a$10$i4a5jw4y9LnKS//8DNDVYe2VfC6Jr2m0Ds1j5un5JNhnkJxg6jAT.', true);
