@@ -11,7 +11,7 @@ import java.util.Map;
 @ResponseBody
 class MeController {
 
-	@GetMapping("/me")
+	@GetMapping("/")
 	Map<String, String> me(Principal principal) {
 		return Map.of("name", principal.getName());
 	}
