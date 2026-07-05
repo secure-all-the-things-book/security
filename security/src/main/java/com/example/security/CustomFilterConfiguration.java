@@ -55,7 +55,6 @@ class CustomFilterConfiguration {
 						 </body>
 						</html>
 						""".formatted(userPrincipal.getName()));
-
 			}
 			IO.println("after " + request.getRequestURL());
 		}
