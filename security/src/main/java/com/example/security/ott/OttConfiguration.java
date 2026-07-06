@@ -12,8 +12,13 @@ class OttConfiguration {
 
 	@Bean
 	Customizer<HttpSecurity> ottCustomizer(ConsoleOneTimeTokenGenerationSuccessHandler handler) {
-		return security -> security.oneTimeTokenLogin(config -> config.tokenGenerationSuccessHandler(handler))
-			.authorizeHttpRequests(a -> a.requestMatchers(SENT_URL).permitAll());
+		return security -> security // <.>
+			.oneTimeTokenLogin(config -> config //
+				.tokenGenerationSuccessHandler(handler))//
+			.authorizeHttpRequests(a -> a
+				// <.>
+				.requestMatchers(SENT_URL)
+				.permitAll()); //
 	}
 
 }
