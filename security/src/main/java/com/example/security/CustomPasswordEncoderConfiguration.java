@@ -20,7 +20,8 @@ class CustomPasswordEncoderConfiguration {
 	DelegatingPasswordEncoder delegatingPasswordEncoder() {
 		var argon = new Argon2Password4jPasswordEncoder();
 		var defaultPasswordEncoder = "argon@Password4j";
-		var mapOfEncoders = Map.<String, PasswordEncoder>of(defaultPasswordEncoder, argon, //
+		var mapOfEncoders = Map.<String, PasswordEncoder>of( //
+				defaultPasswordEncoder, argon, //
 				"bcrypt", new BCryptPasswordEncoder(), //
 				"sha256", new StandardPasswordEncoder()// <.>
 		);
