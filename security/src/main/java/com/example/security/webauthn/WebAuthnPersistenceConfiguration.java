@@ -7,7 +7,6 @@ import org.springframework.jdbc.core.JdbcOperations;
 import org.springframework.security.web.webauthn.management.JdbcPublicKeyCredentialUserEntityRepository;
 import org.springframework.security.web.webauthn.management.JdbcUserCredentialRepository;
 
-@Profile("webauthn-persistence")
 @Configuration
 class WebAuthnPersistenceConfiguration {
 
