@@ -12,24 +12,22 @@ import org.springframework.security.config.annotation.authorization.EnableMultiF
 @EnableMultiFactorAuthentication(authorities = {})
 class GlobalEitherOrMfaConfiguration {
 
-    @Bean
-    AuthorizationManagerFactory<Object> authorizationManagerFactory() {
-        // <.>
-        var webauthn = AllRequiredFactorsAuthorizationManager
-                .builder()
-                .requireFactor(RequiredFactor.Builder::webauthnAuthority)
-                .build();
+	@Bean
+	AuthorizationManagerFactory<Object> authorizationManagerFactory() {
+		// <.>
+		var webauthn = AllRequiredFactorsAuthorizationManager.builder()
+			.requireFactor(RequiredFactor.Builder::webauthnAuthority)
+			.build();
 
-        //<.>
-        var passwordAndOtt = AllRequiredFactorsAuthorizationManager
-                .builder()
-                .requireFactor(RequiredFactor.Builder::passwordAuthority)
-                .requireFactor(RequiredFactor.Builder::ottAuthority)
-                .build();
+		// <.>
+		var passwordAndOtt = AllRequiredFactorsAuthorizationManager.builder()
+			.requireFactor(RequiredFactor.Builder::passwordAuthority)
+			.requireFactor(RequiredFactor.Builder::ottAuthority)
+			.build();
 
-        var mfa = new DefaultAuthorizationManagerFactory<>();
-        mfa.setAdditionalAuthorization(AllRequiredFactorsAuthorizationManager.anyOf(webauthn, passwordAndOtt));
-        return mfa;
-    }
+		var mfa = new DefaultAuthorizationManagerFactory<>();
+		mfa.setAdditionalAuthorization(AllRequiredFactorsAuthorizationManager.anyOf(webauthn, passwordAndOtt));
+		return mfa;
+	}
 
 }

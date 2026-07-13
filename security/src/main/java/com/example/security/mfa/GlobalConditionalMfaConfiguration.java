@@ -10,8 +10,8 @@ import org.springframework.security.core.authority.FactorGrantedAuthority;
 @Configuration
 // <.>
 @EnableMultiFactorAuthentication(
-        authorities = {FactorGrantedAuthority.WEBAUTHN_AUTHORITY, FactorGrantedAuthority.PASSWORD_AUTHORITY},
-        when = {MultiFactorCondition.WEBAUTHN_REGISTERED}
-)
+		authorities = { FactorGrantedAuthority.WEBAUTHN_AUTHORITY, FactorGrantedAuthority.PASSWORD_AUTHORITY },
+		when = { MultiFactorCondition.WEBAUTHN_REGISTERED })
 class GlobalConditionalMfaConfiguration {
+
 }
