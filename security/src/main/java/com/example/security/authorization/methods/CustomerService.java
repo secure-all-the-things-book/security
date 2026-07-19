@@ -10,9 +10,10 @@ import java.util.Map;
 class CustomerService {
 
 	// <.>
-	private final Map<Long, Customer> customers = Map.of(1L, new Customer("josh@joshlong.com"), //
-			2L, new Customer("user@anotherdomain.site")//
-	);
+	private final Map<Long, Customer> customers = Map.of(//
+1L, new Customer("josh@joshlong.com"), //
+2L, new Customer("user@anotherdomain.site")//
+	);//
 
 	@PreAuthorize("hasRole('ADMIN')") // <.>
 	@PostAuthorize(" returnObject  != null  && returnObject.username == authentication.name ") // <.>
