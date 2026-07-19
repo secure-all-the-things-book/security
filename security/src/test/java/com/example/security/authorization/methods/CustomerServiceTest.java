@@ -4,9 +4,12 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.Import;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.test.context.support.WithMockUser;
 
+// <.>
+@Import(TestcontainersConfiguration.class)
 @SpringBootTest
 class CustomerServiceTest {
 
@@ -32,16 +35,16 @@ class CustomerServiceTest {
 
 	// <.>
 	@Test
-	@WithMockUser(username = "bob", roles = { "USER" })
-	void badPost() {
-		Assertions.assertThrows(AccessDeniedException.class, () -> this.customerService.readPrivilegedCustomerData(2));
-	}
-
-	// <.>
-	@Test
 	@WithMockUser(username = "bob")
 	void badPre() {
 		Assertions.assertThrows(AccessDeniedException.class, () -> this.customerService.readPrivilegedCustomerData(1));
 	}
+
+	@Test
+	@WithMockUser(username = "bob", roles = { "USER" })
+	void badPost() {
+		Assertions.assertThrows(AccessDeniedException.class, () -> this.customerService.readPrivilegedCustomerData(2));
+	}
+	// <.>
 
 }
