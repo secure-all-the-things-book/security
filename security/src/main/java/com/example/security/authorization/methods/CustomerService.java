@@ -11,8 +11,8 @@ class CustomerService {
 
 	// <.>
 	private final Map<Long, Customer> customers = Map.of(//
-1L, new Customer("josh@joshlong.com"), //
-2L, new Customer("user@anotherdomain.site")//
+			1L, new Customer("josh@joshlong.com"), //
+			2L, new Customer("user@anotherdomain.site")//
 	);//
 
 	@PreAuthorize("hasRole('ADMIN')") // <.>
