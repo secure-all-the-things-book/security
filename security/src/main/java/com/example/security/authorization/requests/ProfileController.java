@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.security.Principal;
 import java.util.Map;
 
-@Profile("simpleauthorization")
 @Controller
 @ResponseBody
 class ProfileController {
