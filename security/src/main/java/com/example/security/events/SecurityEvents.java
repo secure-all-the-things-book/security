@@ -10,11 +10,6 @@ import org.springframework.util.Assert;
 @Component
 class SecurityEvents {
 
-	private static String message(ApplicationEvent applicationEvent) {
-		Assert.notNull(applicationEvent, "the event should not be null");
-		return applicationEvent.getClass().getName() + " ::: " + applicationEvent;
-	}
-
 	@EventListener
 	void onSecurityEvent(ApplicationEvent securityEvent) {
 		var eventMessage = switch (securityEvent) {
@@ -23,6 +18,11 @@ class SecurityEvents {
 			default -> null;
 		};
 		IO.println("security result: " + eventMessage);
+	}
+
+	private static String message(ApplicationEvent applicationEvent) {
+		Assert.notNull(applicationEvent, "the event should not be null");
+		return applicationEvent.getClass().getName() + " ::: " + applicationEvent;
 	}
 
 }
