@@ -18,3 +18,6 @@ values ('josh@joshlong.com', 'ROLE_ADMIN');
 
 insert into authorities (username, authority)
 values ('user@anotherdomain.site', 'ROLE_USER');
+
+insert into authorities (username, authority)
+values ('josh@joshlong.com', 'ROLE_EDITOR');
