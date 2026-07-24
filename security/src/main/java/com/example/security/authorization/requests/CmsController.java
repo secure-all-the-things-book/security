@@ -9,12 +9,6 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api")
 class CmsController {
 
-	record Article(int id) {
-	}
-
-	record ArticleFile(int id) {
-	}
-
 	// <.>
 	@GetMapping("/articles/{articleId}")
 	Article article(@PathVariable int articleId) {
@@ -33,6 +27,12 @@ class CmsController {
 	ArticleFile file(@PathVariable int fileId) {
 		IO.println("looking up file #" + fileId);
 		return new ArticleFile(fileId);
+	}
+
+	record Article(int id) {
+	}
+
+	record ArticleFile(int id) {
 	}
 
 }

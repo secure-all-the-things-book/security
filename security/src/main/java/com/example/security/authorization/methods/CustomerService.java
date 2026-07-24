@@ -16,7 +16,8 @@ class CustomerService {
 	);//
 
 	@PreAuthorize("hasRole('ADMIN')") // <.>
-	@PostAuthorize(" returnObject  != null  && returnObject.username == authentication.name ") // <.>
+	@PostAuthorize(" returnObject  != null  && returnObject.username == authentication.name ")
+	// <.>
 	Customer readPrivilegedCustomerData(long id) {
 		return this.customers.getOrDefault(id, null);
 	}

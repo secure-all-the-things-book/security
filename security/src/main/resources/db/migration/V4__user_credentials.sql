@@ -2,7 +2,7 @@ create table user_credentials
 (
     credential_id                varchar(1000) not null,
     user_entity_user_id          varchar(1000) not null,
-    public_key                   bytea          not null,
+    public_key                   bytea         not null,
     signature_count              bigint,
     uv_initialized               boolean,
     backup_eligible              boolean       not null,
