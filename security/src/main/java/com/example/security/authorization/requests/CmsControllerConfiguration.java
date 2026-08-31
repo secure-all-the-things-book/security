@@ -27,25 +27,24 @@ class CmsControllerConfiguration {
 			.access(//
 					(supplier, authorizationContext) -> {
 						var authentication = supplier.get();
-						var isUser = Objects.requireNonNull(authentication)
+						var isAdmin = Objects.requireNonNull(authentication)
 							.getAuthorities()//
 							.stream() //
-							.anyMatch(ga -> Objects.requireNonNull(ga.getAuthority()).contains("USER"));
+							.anyMatch(ga -> Objects.requireNonNull(ga.getAuthority()).equals("ROLE_ADMIN"));
 						var variables = Objects.requireNonNull(authorizationContext).getVariables();
 						if (!variables.isEmpty()) {
 							var fileId = Long.parseLong(variables.getOrDefault("fileId", "0"));
 							IO.println("the file id is " + fileId);
-							return new AuthorizationDecision(isUser && canUserAccess(fileId));
+							return new AuthorizationDecision(isAdmin && canAccess(fileId));
 						}
 						return new AuthorizationDecision(false);
 					})
-				// <.>
-				.requestMatchers("/api/**")
-				.hasRole("USER")
-		);
+			// <.>
+			.requestMatchers("/api/**")
+			.hasRole("USER"));
 	}
 
-	private boolean canUserAccess(long fileId) {
+	private boolean canAccess(long fileId) {
 		var goodFileIds = List.of(1L, 2L, 3L);
 		return fileId > 0 && goodFileIds.contains(fileId);
 	}
