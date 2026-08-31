@@ -25,6 +25,7 @@ class MfaConfiguration {
 			// <.>
 			.requestMatchers(ProfileController.ADMIN_PATH)
 			.access(mfaAmf.hasRole("ADMIN"))
+			// <.>
 			.requestMatchers(ProfileController.USER_PATH)
 			.authenticated());
 	}
