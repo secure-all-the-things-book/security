@@ -42,7 +42,6 @@ class CmsControllerConfiguration {
 				// <.>
 				.requestMatchers("/api/**")
 				.hasRole("USER")
-
 		);
 	}
 
