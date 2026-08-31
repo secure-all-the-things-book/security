@@ -20,13 +20,10 @@ class CmsControllerConfiguration {
 			.requestMatchers(HttpMethod.POST, "/api/**")
 			.hasRole("EDITOR")
 			// <.>
-			.requestMatchers("/api/*")
-			.hasRole("USER")
-			// <.>
-			.requestMatchers("/admin/**")
+			.requestMatchers("/api/admin/**")
 			.hasRole("ADMIN")
 			// <.>
-			.requestMatchers("/files/file.{fileId}")
+			.requestMatchers("/api/files/file.{fileId}")
 			.access(//
 					(supplier, authorizationContext) -> {
 						var authentication = supplier.get();
@@ -41,7 +38,12 @@ class CmsControllerConfiguration {
 							return new AuthorizationDecision(isUser && canUserAccess(fileId));
 						}
 						return new AuthorizationDecision(false);
-					}));
+					})
+				// <.>
+				.requestMatchers("/api/**")
+				.hasRole("USER")
+
+		);
 	}
 
 	private boolean canUserAccess(long fileId) {
