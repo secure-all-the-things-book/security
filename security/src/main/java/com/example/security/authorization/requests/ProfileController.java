@@ -2,6 +2,7 @@ package com.example.security.authorization.requests;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.security.Principal;
@@ -11,9 +12,9 @@ import java.util.Map;
 @ResponseBody
 class ProfileController {
 
-	static final String USER_PATH = "/user";
+	static final String USER_PATH = "/profiles/user";
 
-	static final String ADMIN_PATH = "/admin";
+	static final String ADMIN_PATH = "/profiles/admin";
 
 	@GetMapping(USER_PATH)
 	Map<String, String> user(Principal principal) {
