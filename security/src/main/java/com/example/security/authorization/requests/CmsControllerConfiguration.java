@@ -33,7 +33,7 @@ class CmsControllerConfiguration {
 							.anyMatch(ga -> Objects.requireNonNull(ga.getAuthority()).equals("ROLE_ADMIN"));
 						var variables = Objects.requireNonNull(authorizationContext).getVariables();
 						if (!variables.isEmpty()) {
-							var fileId = Long.parseLong(variables.getOrDefault("fileId", "0"));
+							var fileId = parseFileId(variables.getOrDefault("fileId", "0"));
 							IO.println("the file id is " + fileId);
 							return new AuthorizationDecision(isAdmin && canAccess(fileId));
 						}
@@ -42,6 +42,16 @@ class CmsControllerConfiguration {
 			// <.>
 			.requestMatchers("/api/**")
 			.hasRole("USER"));
+	}
+
+	// <.>
+	private long parseFileId(String value) {
+		try {
+			return Long.parseLong(value);
+		} //
+		catch (NumberFormatException e) {
+			return 0;
+		}
 	}
 
 	private boolean canAccess(long fileId) {
